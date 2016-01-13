@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tetris">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="MainController as vm">
+<div id="gamespace">
+    <div id="toolbar">
+        <button class="toolbar-button" ng-click="vm.startGame()" ng-disabled="vm.started">start</button>
+        <span class="toolbar-communicate" ng-if="vm.gameOver">Game Over</span>
+        <span id="score">{{vm.score}}</span>
+    </div>
+    <div class="row" ng-repeat="row in vm.gamespace track by $index">
+        <div class="block color-{{block}}" ng-repeat="block in row track by $index"></div>
+    </div>
+    <div id="game-over" ng-if="vm.gameOver"></div>
+</div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="app.preferences.js"></script>
+<script src="figure.service.js"></script>
+<script src="main.controller.js"></script>
+</body>
+</html>
